@@ -1,0 +1,31 @@
+<span appChangetext style = "text-align:left;"> Hello Gamers, This is {{title | uppercase}}</span>
+<div style="text-align: left;">
+  <span  class="text-xl font-mono font-bold my-1">P1(Green): {{players[0].dice}} || </span>
+  <span class="text-xl font-mono font-bold my-1">P2(Red): {{players[1].dice}} || </span>
+  <span class="text-xl font-mono font-bold my-1">P3(Blue): {{players[2].dice}} || </span>
+  <span class="text-xl font-mono font-bold my-1">P4(Yellow): {{players[3].dice}} || </span>
+  </div>
+<table style="text-align: left;" class="flex justify-left">
+  <tbody>
+    <tr *ngFor="let row of [0,1,2,3,4,5,6,7,8,9,10,11,12]">
+      <td *ngFor="let col of [0,1,2,3,4,5,6,7,8,9,10,11,12]">
+        <div im class="w-10 h-10 border-white p-1" [ngClass]="getSquareColor(row,col)">
+          <p *ngIf="row==players[0].currentPosition.row && col==players[0].currentPosition.col" class="text-3xl text-green-500 ml-2"><fa-icon [icon]="faChessPawn"></fa-icon></p>
+          <p *ngIf="row==players[1].currentPosition.row && col==players[1].currentPosition.col" class="text-3xl text-red-500 ml-2"><fa-icon [icon]="faChessPawn"></fa-icon></p>
+          <p *ngIf="row==players[2].currentPosition.row && col==players[2].currentPosition.col" class="text-3xl text-blue-500 ml-2"><fa-icon [icon]="faChessPawn"></fa-icon></p>
+          <p *ngIf="row==players[3].currentPosition.row && col==players[3].currentPosition.col" class="text-3xl text-yellow-500 ml-2"><fa-icon [icon]="faChessPawn"></fa-icon></p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="flex justify-right">
+  <div>
+    <span>Player {{currentPlayerIndex + 1}}'s turn.           </span>
+    <button style="font-weight: bold;background-color: rgb(231, 210, 210);" (click)="rollDice()" class="p-1 border border-gray-300 rounded-md hover:bg-slate-100">ROLL DICE :)</button> 
+  </div>
+</div>
+
+
+
+
